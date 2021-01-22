@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Layout from './containers/layout/layout';
+
+
+////// Metronome needs a didicated stop function that I have added to
+//the NPM pack, dont know if it is loaded yet
+
 
 function App() {
+  const [samples, setSamples] = useState([]);
+  const [BPM, setBPM] = useState(120);
+  const [playing, setPlaying] = useState(false);
+  const [oscCount, setOscCount] = useState(1);
+
+  function handleAddSample (newSample) {
+    if (newSample) setSamples([...samples, newSample]);
+    else {
+      setSamples([...samples, 'Oscillator' + oscCount]);
+      setOscCount(oscCount + 1);
+    }
+  }
+
+  function handleStart (e) {
+    e.preventDefault();
+    if (playing) setPlaying(false);
+    else if(!playing) setPlaying(true);
+  }
+
+  function handleBpmChange (e) {
+    e.preventDefault();
+    setBPM(e.target.value);
+    console.log('current BPM', BPM)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Layout
+    handleBpmChange={handleBpmChange}
+    handleStart={handleStart}
+    handleAddSample={handleAddSample}
+    samples={samples}
+    BPM={BPM}
+    playing={playing}
+    ></Layout>
+    </>
   );
 }
 

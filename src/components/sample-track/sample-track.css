@@ -1,0 +1,40 @@
+.sample-track-container {
+  display: flex;
+  height:12vh;
+  margin: 10px;
+}
+
+.sample-track-name {
+  height: 4.9vw;
+  width: 9vw;
+  margin: 2px;
+  margin-right: 10px;
+}
+
+.sample-track-name-input {
+  height: 100%;
+  width: 100%;
+  font-size: 30px
+}
+
+.check-box-cont {
+  width: 100%;
+}
+
+.beat-check-box {
+  appearance: none;
+  height: 4.9vw;
+  width: 4.9vw;
+  background-color: grey;
+  border-radius: 3px;;
+}
+
+.beat-check-box:checked:active, .beat-check-box:active {
+  background-color: aliceblue;
+  border: 1px solid black;
+}
+
+.beat-check-box:checked {
+  background-color: black;
+  border: 1px solid aliceblue;
+}

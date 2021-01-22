@@ -1,0 +1,8 @@
+.osc-controls {
+  display: flex;
+  flex-direction: column;
+  width: 9vw;
+  margin: 2px;
+  margin-right: 10px;
+
+}
