@@ -1,10 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Layout from './containers/layout/layout';
-
-
-////// Metronome needs a didicated stop function that I have added to
-//the NPM pack, dont know if it is loaded yet
-
 
 function App() {
   const [samples, setSamples] = useState([]);
@@ -12,7 +7,7 @@ function App() {
   const [playing, setPlaying] = useState(false);
   const [oscCount, setOscCount] = useState(1);
 
-  function handleAddSample (newSample) {
+  function handleAddSample(newSample) {
     if (newSample) setSamples([...samples, newSample]);
     else {
       setSamples([...samples, 'Oscillator' + oscCount]);
@@ -20,28 +15,28 @@ function App() {
     }
   }
 
-  function handleStart (e) {
+  function handleStart(e) {
     e.preventDefault();
     if (playing) setPlaying(false);
-    else if(!playing) setPlaying(true);
+    else if (!playing) setPlaying(true);
   }
 
-  function handleBpmChange (e) {
+  function handleBpmChange(e) {
     e.preventDefault();
     setBPM(e.target.value);
-    console.log('current BPM', BPM)
+    console.log('current BPM', BPM);
   }
 
   return (
     <>
-    <Layout
-    handleBpmChange={handleBpmChange}
-    handleStart={handleStart}
-    handleAddSample={handleAddSample}
-    samples={samples}
-    BPM={BPM}
-    playing={playing}
-    ></Layout>
+      <Layout
+        handleBpmChange={handleBpmChange}
+        handleStart={handleStart}
+        handleAddSample={handleAddSample}
+        samples={samples}
+        BPM={BPM}
+        playing={playing}
+      ></Layout>
     </>
   );
 }

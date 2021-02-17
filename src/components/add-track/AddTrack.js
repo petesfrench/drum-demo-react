@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import Samples from '../../samples/samples';
+import './add-track.css';
 
 function AddTrack({ handleAddSample }) {
   const [sample, setSample] = useState('');
 
-  function handleCustomUrlChange() {
+  function handleCustomUrlChange(e) {
     setSample(e.target.value);
   }
 
-  function handleDropdownUrlChange() {
+  function handleDropdownUrlChange(e) {
     console.log(e.target.value);
     setSample(Samples[e.target.value]);
   }
 
-  function handleEitherBtn() {
+  function handleEitherBtn(e) {
     e.preventDefault();
     handleAddSample(sample);
     setSample('');
@@ -39,6 +40,7 @@ function AddTrack({ handleAddSample }) {
           name='url-dropdown'
           onChange={handleDropdownUrlChange}
         >
+          <option value=''>Choose a sample</option>
           <option value='high_hat_closed'>High hat closed</option>
           <option value='high_hat_open'>High hat open</option>
           <option value='snare_1'>Snare-1</option>
@@ -54,9 +56,6 @@ function AddTrack({ handleAddSample }) {
           <option value='cowbell'>Cowbell</option>
           <option value='clap'>Clap</option>
         </select>
-        <button className='add-url-btn' onClick={handleEitherBtn}>
-          Add
-        </button>
       </form>
     </div>
   );

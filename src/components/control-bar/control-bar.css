@@ -14,29 +14,15 @@ button {
   border-right: 1px solid black;
 }
 
+.add-track-component {
+  margin: 10px;
+}
+
 .start-btn {
-  width:10%;
+  width: 10%;
   height: 60%;
   align-self: center;
-  font-size: 40px
-}
-
-.input-form {
-  align-self: center;
-  display: flex;
-  height: 10vh;
-}
-
-.url-input {
-  align-self: center;
-  height: 5vh;
-  width: 10vw;
-}
-
-.add-url-btn {
-  height: 40%;
-  align-self: center;
-  height: 5.5vh;
+  font-size: 40px;
 }
 
 .bpm-cont {
@@ -50,5 +36,4 @@ button {
   margin-left: 2px;
   font-size: 40px;
   border: none;
-
 }

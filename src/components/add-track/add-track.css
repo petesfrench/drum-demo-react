@@ -1,0 +1,30 @@
+.input-form {
+  align-self: center;
+  display: flex;
+  height: 10vh;
+}
+
+.url-input {
+  align-self: center;
+  height: 5vh;
+  width: 10vw;
+  margin-bottom: -1px;
+}
+
+.dropdown-input {
+  align-self: center;
+  height: 5vh;
+  width: 12.3vw;
+}
+
+.add-url-btn {
+  height: 40%;
+  align-self: center;
+  height: 5.5vh;
+}
+
+.add-track-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

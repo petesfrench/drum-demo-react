@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import SampleTrack from "../../components/sample-track/sample-track";
-import OscTrack from "../../components/osc-track/osc-track";
-import "./tracks-container.css";
-import Metronome from "simple-beats";
+import React, { useEffect, useState } from 'react';
+import SampleTrack from '../../components/sample-track/sample-track';
+import OscTrack from '../../components/osc-track/osc-track';
+import './tracks-container.css';
+import Metronome from 'simple-beats';
 
 function TracksContainer({ samples, BPM, playing }) {
   const [tracks, setTracks] = useState({});
@@ -14,6 +14,9 @@ function TracksContainer({ samples, BPM, playing }) {
         const newTrack = new Metronome();
         if (!sample.match(/Oscillator/)) {
           newTrack.hasPromise = true;
+          newTrack.tagName = sample
+            .match(/([^\/]+)(?=\.\w+$)/)[0]
+            .replace(/-/, '_');
           newTrack.loadSamples([sample]);
         }
         return {
@@ -23,11 +26,12 @@ function TracksContainer({ samples, BPM, playing }) {
       }, {});
       setTracks(newTracks);
     }
+    console.log('tracks ----->', tracks);
   }, [samples]);
 
   return (
     <>
-      <div className="tracks-container-name">TRACKS</div>
+      <div className='tracks-container-name'>TRACKS</div>
       {Object.values(tracks).map((track) => {
         if (track.hasPromise) {
           return <SampleTrack BPM={BPM} newTrack={track} playing={playing} />;
