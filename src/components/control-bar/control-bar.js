@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './control-bar.css';
 
-function ControlBar ({handleBpmChange, handleStart, handleAddSample, BPM}) {
+function ControlBar({ handleBpmChange, handleStart, handleAddSample, BPM }) {
   const [sample, setSample] = useState('');
 
-  function handleSampleUrlChange (e) {
+  function handleSampleUrlChange(e) {
     setSample(e.target.value);
   }
 
@@ -14,17 +14,36 @@ function ControlBar ({handleBpmChange, handleStart, handleAddSample, BPM}) {
     setSample('');
   }
 
+  function handleDropDown(e) {
+    // e.preventDefault();
+  }
 
   return (
-    <div className="controls-cont">
-      <button className="start-btn" onClick={handleStart}>Play</button>
-      <form className="input-form">
-        <input className="url-input" type="text" value={sample} onChange={handleSampleUrlChange}></input>
-        <button className="add-url-btn" onClick={handleAddSampleBtn}>Add</button>
+    <div className='controls-cont'>
+      <button className='start-btn' onClick={handleStart}>
+        Play
+      </button>
+      <form className='input-form'>
+        <input
+          className='url-input'
+          type='text'
+          placeholder='insert custom url'
+          value={sample}
+          onChange={handleSampleUrlChange}
+        ></input>
+        <button className='add-url-btn' onClick={handleAddSampleBtn}>
+          Add
+        </button>
       </form>
-      <form className="bpm-cont">
-        <label>BPM:
-        <input className="bpm-input" type="number" value={BPM} onChange={handleBpmChange}></input>
+      <form className='bpm-cont'>
+        <label>
+          BPM:
+          <input
+            className='bpm-input'
+            type='number'
+            value={BPM}
+            onChange={handleBpmChange}
+          ></input>
         </label>
       </form>
     </div>
